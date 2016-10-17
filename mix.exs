@@ -17,7 +17,7 @@ defmodule VoicemailTwimletInterface.Mixfile do
   # Type `mix help compile.app` for more information.
   def application do
     [mod: {VoicemailTwimletInterface, []},
-     applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext]]
+     applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext, :ex_twilio]]
   end
 
   # Specifies which paths to compile per environment.
@@ -33,6 +33,8 @@ defmodule VoicemailTwimletInterface.Mixfile do
      {:phoenix_html, "~> 2.6"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.11"},
-     {:cowboy, "~> 1.0"}]
+     {:cowboy, "~> 1.0"},
+     {:ex_twilio, "~> 0.2.0"},
+     {:mock, "~> 0.2.0", only: :test}]
   end
 end
