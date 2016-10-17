@@ -1,4 +1,4 @@
-# Voicemail Twimlet interface
+# Voicemail Twimlet interface [![Build Status](https://travis-ci.org/backspace/voicemail_twimlet_interface.svg?branch=primary)](https://travis-ci.org/backspace/voicemail_twimlet_interface)
 
 This is a simple front-end to set a Twilio phone number’s voice webhook URL
 to a voicemal Twimlet URL, such as those generated [here](https://www.twilio.com/labs/twimlets/voicemail).
