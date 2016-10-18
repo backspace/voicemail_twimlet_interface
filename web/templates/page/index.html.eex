@@ -1,3 +1,9 @@
 <div class="jumbotron">
   <h2><%= @voice_url %></h2></h2>
+
+  <label for="Email">Email</label>
+  <input name="Email" value="<%= @query["Email"] %>">
+
+  <label for="Message">Message</label>
+  <input name="Message" value="<%= @query["Message"] %>">
 </div>

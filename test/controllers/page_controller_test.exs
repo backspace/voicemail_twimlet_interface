@@ -12,12 +12,13 @@ defmodule VoicemailTwimletInterface.PageControllerTest do
   end
 
   test "GET / with credentials", %{conn: conn} do
-    with_mock ExTwilio.IncomingPhoneNumber, [find: fn(_sid) -> {:ok, %{voice_url: "a fake voice URL"}} end] do
+    with_mock ExTwilio.IncomingPhoneNumber, [find: fn(_sid) -> {:ok, %{voice_url: "http://example.com?Email=hello@example.com&Message=A%20message"}} end] do
       conn = conn
         |> using_basic_auth(@username, @password)
         |> get("/")
 
-      assert html_response(conn, 200) =~ "a fake voice URL"
+      assert html_response(conn, 200) =~ "A message"
+      assert html_response(conn, 200) =~ "hello@example.com"
     end
   end
 

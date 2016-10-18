@@ -6,6 +6,10 @@ defmodule VoicemailTwimletInterface.PageController do
   def index(conn, _params) do
     number_sid = Application.get_env(:voicemail_twimlet_interface, :number_sid)
     {_response, number} = ExTwilio.IncomingPhoneNumber.find(number_sid)
-    render conn, "index.html", voice_url: number.voice_url
+
+    parsed_url = URI.parse(number.voice_url)
+    query = URI.decode_query(parsed_url.query)
+
+    render conn, "index.html", voice_url: number.voice_url, query: query
   end
 end
