@@ -13,7 +13,9 @@ use Mix.Config
 # which you typically run after static files are built.
 config :voicemail_twimlet_interface, VoicemailTwimletInterface.Endpoint,
   http: [port: {:system, "PORT"}],
-  url: [host: "example.com", port: 80]
+  url: [scheme: "https", host: "remand-voicemail.herokuapp.com", port: 443],
+  force_ssl: [rewrite_on: [:x_forwarded_proto]],
+  secret_key_base: System.get_env("SECRET_KEY_BASE")
 
 # Do not print debug messages in production
 config :logger, level: :info
