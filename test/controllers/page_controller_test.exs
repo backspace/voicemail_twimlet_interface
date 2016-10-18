@@ -28,4 +28,24 @@ defmodule VoicemailTwimletInterface.PageControllerTest do
 
     assert response(conn, 401) =~ "401 Unauthorized"
   end
+
+  test "POST / with credentials", %{conn: conn} do
+    number = %{voice_url: "http://example.org"}
+
+    with_mock ExTwilio.IncomingPhoneNumber, [
+      find: fn(_sid) -> {:ok, number} end,
+      update: fn(number_to_update, voice_url: new_voice_url) ->
+        assert number_to_update == number
+        assert new_voice_url == "http://example.org?Email=new%40new.com&Message=A+new+message"
+      end
+    ] do
+
+      conn = conn
+        |> using_basic_auth(@username, @password)
+        |> post("/", [Email: "new@new.com", Message: "A new message"])
+
+      assert redirected_to(conn, 302) =~ "/"
+      assert called ExTwilio.IncomingPhoneNumber.update(number, :_)
+    end
+  end
 end
