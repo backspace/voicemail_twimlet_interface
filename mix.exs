@@ -34,6 +34,7 @@ defmodule VoicemailTwimletInterface.Mixfile do
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
+     {:basic_auth, "~> 1.0.0"},
      {:ex_twilio, "~> 0.2.0"},
      {:mock, "~> 0.2.0", only: :test}]
   end

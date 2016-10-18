@@ -19,3 +19,9 @@ config :voicemail_twimlet_interface, VoicemailTwimletInterface.Endpoint,
 
 # Do not print debug messages in production
 config :logger, level: :info
+
+config :voicemail_twimlet_interface, :basic_auth, [
+  realm: "Admin Area",
+  username: System.get_env("BASIC_AUTH_USER"),
+  password: System.get_env("BASIC_AUTH_PASSWORD")
+]

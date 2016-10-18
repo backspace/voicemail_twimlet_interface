@@ -21,6 +21,12 @@ config :logger, :console,
 config :ex_twilio, account_sid: System.get_env("TWILIO_ACCOUNT_SID"),
                    auth_token: System.get_env("TWILIO_AUTH_TOKEN")
 
+config :voicemail_twimlet_interface, :basic_auth, [
+  realm: "Admin Area",
+  username: "admin",
+  password: "password"
+]
+
 config :voicemail_twimlet_interface,
   number_sid: System.get_env("TWILIO_NUMBER_SID")
 
