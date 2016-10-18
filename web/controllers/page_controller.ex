@@ -23,6 +23,8 @@ defmodule VoicemailTwimletInterface.PageController do
 
     ExTwilio.IncomingPhoneNumber.update(number, voice_url: new_url)
 
-    redirect conn, to: "/"
+    conn
+      |> put_flash(:info, "Updated the voicemail settings successfully.")
+      |> redirect(to: "/")
   end
 end
